@@ -6,6 +6,13 @@ from Foundation import *
 from AppKit import *
 import sys, os, re
 
+MainBundle = NSBundle.mainBundle()
+path = MainBundle.bundlePath() + "/Contents/Scripts"
+if not path in sys.path:
+	sys.path.append( path )
+
+import GlyphsApp
+
 GlyphsFilterProtocol = objc.protocolNamed( "GlyphsFilter" )
 
 class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
@@ -21,7 +28,10 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 		Distinguishes the API version the plugin was built for. 
 		Return 1.
 		"""
-		return 1
+		try:
+			return 1
+		except Exception as e:
+			self.logToConsole( "interfaceVersion: %s" % str(e) )
 	
 	def setController_( self, Controller ):
 		"""
@@ -62,7 +72,10 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 		Return None if you do not want to set a shortcut.
 		Users can set their own shortcuts in System Prefs.
 		"""
-		return None
+		try:
+			return None
+		except Exception as e:
+			self.logToConsole( "keyEquivalent: %s" % str(e) )
 	
 	def processLayer( self, thisLayer ):
 		"""
