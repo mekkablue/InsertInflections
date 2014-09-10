@@ -172,8 +172,22 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 		The first item in Arguments is the class-name. After that, it depends on the filter.
 		"""
 		try:
+			# set glyphList to all glyphs
+			glyphList = Font.glyphs
+			
+			# Override defaults with actual values from custom parameter:
+			if len( Arguments ) > 1:
+				
+				# change glyphList to include or exclude glyphs
+				if "exclude:" in Arguments[-1]:
+					excludeList = [ n.strip() for n in Arguments.pop(-1).replace("exclude:","").strip().split(",") ]
+					glyphList = [ g for g in glyphList if not g.name in excludeList ]
+				elif "include:" in Arguments[-1]:
+					includeList = [ n.strip() for n in Arguments.pop(-1).replace("include:","").strip().split(",") ]
+					glyphList = [ Font.glyphs[n] for n in includeList ]
+			
 			FontMasterId = Font.fontMasterAtIndex_(0).id
-			for thisGlyph in Font.glyphs:
+			for thisGlyph in glyphList:
 				Layer = thisGlyph.layerForKey_( FontMasterId )
 				self.processLayer( Layer )
 		except Exception as e:
