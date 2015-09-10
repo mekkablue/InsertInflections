@@ -95,10 +95,10 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 							inflectionTime = inflections[0]
 							thisPath.insertNodeWithPathTime_( i + inflectionTime )
 							
-			return True
+			return (True, None)
 		except Exception as e:
 			self.logToConsole( "processLayer: %s" % str(e) )
-			return False
+			return (False, None)
 
 	def computeInflection( self, p1, p2, p3, p4 ):
 		"""
