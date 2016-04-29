@@ -12,6 +12,7 @@ if not path in sys.path:
 	sys.path.append( path )
 
 import GlyphsApp
+from GlyphsApp import CURVE
 
 GlyphsFilterProtocol = objc.protocolNamed( "GlyphsFilter" )
 
@@ -82,19 +83,21 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 		Each selected layer is processed here.
 		"""
 		try:
+			print "processLayer 0"
 			for ip in range( len( thisLayer.paths )):
 				thisPath = thisLayer.paths[ip]
 				numberOfNodes = len( thisPath.nodes )
 
 				for i in range(numberOfNodes-1, -1, -1):
 					node = thisPath.nodes[i]
-					if node.type == 35: #CURVE
+					if node.type == CURVE:
 						nl = [ thisPath.nodes[ (x+numberOfNodes)%numberOfNodes ] for x in range( i-3, i+1 ) ]
 						inflections = self.computeInflection( nl[0], nl[1], nl[2], nl[3] )
 						if len(inflections) == 1:
 							inflectionTime = inflections[0]
 							thisPath.insertNodeWithPathTime_( i + inflectionTime )
-							
+			
+			print "processLayer 1"
 			return (True, None)
 		except Exception as e:
 			self.logToConsole( "processLayer: %s" % str(e) )
@@ -148,10 +151,12 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 		and more than one layer is selected.
 		"""
 		try:
+			print "runFilterWithLayers_error_ 0"
 			for k in range(len(Layers)):
 				Layer = Layers[k]
 				Layer.clearSelection()
 				self.processLayer( Layer )
+			print "runFilterWithLayers_error_ 1"
 		except Exception as e:
 			self.logToConsole( "runFilterWithLayers_error_: %s" % str(e) )
 	
