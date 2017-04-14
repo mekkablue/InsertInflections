@@ -33,6 +33,8 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 			return 1
 		except Exception as e:
 			self.logToConsole( "interfaceVersion: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def setController_( self, Controller ):
 		"""
@@ -42,6 +44,8 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 			self._controller = Controller
 		except Exception as e:
 			self.logToConsole( "setController_: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def controller( self ):
 		"""
@@ -51,6 +55,8 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 			return self._controller
 		except Exception as e:
 			self.logToConsole( "controller: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 		
 	def setup( self ):
 		"""
@@ -60,6 +66,8 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 			return None
 		except Exception as e:
 			self.logToConsole( "setup: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def title( self ):
 		"""
@@ -77,13 +85,14 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 			return None
 		except Exception as e:
 			self.logToConsole( "keyEquivalent: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def processLayer( self, thisLayer ):
 		"""
 		Each selected layer is processed here.
 		"""
 		try:
-			print "processLayer 0"
 			for ip in range( len( thisLayer.paths )):
 				thisPath = thisLayer.paths[ip]
 				numberOfNodes = len( thisPath.nodes )
@@ -97,7 +106,6 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 							inflectionTime = inflections[0]
 							thisPath.insertNodeWithPathTime_( i + inflectionTime )
 			
-			print "processLayer 1"
 			return (True, None)
 		except Exception as e:
 			self.logToConsole( "processLayer: %s" % str(e) )
@@ -144,6 +152,8 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 			return Result
 		except Exception as e:
 			self.logToConsole( "computeInflection: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def runFilterWithLayers_error_(self, Layers, Error):
 		"""
@@ -151,14 +161,16 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 		and more than one layer is selected.
 		"""
 		try:
-			print "runFilterWithLayers_error_ 0"
+			result = None
 			for k in range(len(Layers)):
 				Layer = Layers[k]
 				Layer.clearSelection()
-				self.processLayer( Layer )
-			print "runFilterWithLayers_error_ 1"
+				result = self.processLayer( Layer )
+			return result
 		except Exception as e:
 			self.logToConsole( "runFilterWithLayers_error_: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def runFilterWithLayer_options_error_( self, Layer, Options, Error ):
 		"""
@@ -169,6 +181,8 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 			return self.runFilterWithLayer_error_( self, Layer, Error )
 		except Exception as e:
 			self.logToConsole( "runFilterWithLayer_options_error_: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def runFilterWithLayer_error_(self, Layer, Error):
 		"""
@@ -179,6 +193,8 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 			return self.processLayer( Layer )
 		except Exception as e:
 			self.logToConsole( "runFilterWithLayer_error_: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def processFont_withArguments_( self, Font, Arguments ):
 		"""
@@ -207,6 +223,8 @@ class GlyphsFilterInsertInflections ( NSObject, GlyphsFilterProtocol ):
 				self.processLayer( Layer )
 		except Exception as e:
 			self.logToConsole( "processFont_withArguments_: %s" % str(e) )
+			import traceback
+			print traceback.format_exc()
 	
 	def logToConsole( self, message ):
 		"""
