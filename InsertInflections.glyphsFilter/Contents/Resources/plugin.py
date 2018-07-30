@@ -10,7 +10,7 @@ class InsertInflections(FilterWithoutDialog):
 		self.menuName = Glyphs.localize({
 			'en': u'Insert Inflections',
 			'de': u'Inflektionspunkte einfügen',
-			'fr': u'Insérer les points d’inflexion',
+			'fr': u'Ajouter les points d’inflexion',
 		})
 		self.keyboardShortcut = None # With Cmd+Shift
 
