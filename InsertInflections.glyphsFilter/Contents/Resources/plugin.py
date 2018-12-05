@@ -12,6 +12,7 @@ class InsertInflections(FilterWithoutDialog):
 			'de': u'Inflektionspunkte einfügen',
 			'fr': u'Ajouter les points d’inflexion',
 			'es': u'Agregar puntos de inflexión',
+			'zh': u'曲线拐点',
 		})
 		self.keyboardShortcut = None # With Cmd+Shift
 
