@@ -3,7 +3,7 @@
 This is a plugin for the [Glyphs font editor](http://glyphsapp.com/) by Georg Seifert.
 It inserts nodes on all inflections of all selected glyphs. This is useful for monoline workflows, where inflected paths need to be expanded to a closed stroke; and for conversion into TrueType outlines.
 
-After installation, it will add the menu item *Filter > Insert Inflections* (de: *Inflektionspunkte einfügen,* fr: *Ajouter les points d’inflexion,* es: *Agregar puntos de inflexión,* zh: 曲线拐点). You can set a keyboard shortcut in System Preferences.
+After installation, it will add the menu item *Filter > Insert Inflections* (de: *Inflektionspunkte einfügen,* fr: *Ajouter les points d’inflexion,* es: *Agregar puntos de inflexión,* zh: 🎢曲线拐点). You can set a keyboard shortcut in System Preferences.
 
 ![Before (left) and after (right).](InsertInflections.png "Inserting Inflections")
 
