@@ -21,7 +21,7 @@ After installation, it will add the menu item *Filter > Insert Inflections* (de:
 Alternatively, you can also use it as a custom parameter:
 
 	Property: Filter
-	Value: GlyphsFilterInsertInflections;
+	Value: InsertInflections;
 
 At the end of the parameter value, you can hang `exclude:` or `include:`, followed by a comma-separated list of glyph names. This will apply the filter only to the included glyphs, or the glyphs not excluded, respectively.
 
