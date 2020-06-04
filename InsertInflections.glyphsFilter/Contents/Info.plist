@@ -13,15 +13,15 @@
 	<key>CFBundleName</key>
 	<string>InsertInflections</string>
 	<key>CFBundleVersion</key>
-	<string>17</string>
+	<string>18</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0</string>
+	<string>3.0.1</string>
 	<key>UpdateFeedURL</key>
 	<string>https://raw.githubusercontent.com/mekkablue/InsertInflections/master/InsertInflections.glyphsReporter/Contents/Info.plist</string>
 	<key>productPageURL</key>
 	<string>https://github.com/mekkablue/InsertInflections</string>
 	<key>productReleaseNotes</key>
-	<string>Added Chinese localisation, thx 刘钊， 宋熙然， 杨翕丞， 张大可.</string>
+	<string>Updated plugin binary.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright, Rainer Erich Scheichelbauer, 2014-2018</string>
 	<key>NSPrincipalClass</key>
